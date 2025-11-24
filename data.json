@@ -1,0 +1,10 @@
+{
+  "baseDeConhecimento": [
+    {
+      "titulo": "Técnica Pomodoro para estudar matemática",
+      "categoria": "Matemática",
+      "nivel": "Iniciante",
+      "descricao": "Estude em blocos de 25 minutos com pausas de 5 minutos. Após 4 blocos, faça uma pausa maior."
+    }
+  ]
+}

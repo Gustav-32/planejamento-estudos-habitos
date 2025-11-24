@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planner de Estudos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark-theme">
+  <div class="app-container">
+    <!-- HERO -->
+    <header class="hero-card">
+      <div>
+        <h1>Planejamento de Estudos e Hábitos</h1>
+        <!-- Frase corrigida -->
+        <p>Não espere por oportunidades, crie-as.</p>
+      </div>
+      <button id="modeToggle" class="hero-toggle">🌙</button>
+    </header>
+
+    <!-- TEMAS -->
+    <div class="theme-row">
+      <button class="theme-pill active" data-theme="classico">⭐ Clássico</button>
+      <button class="theme-pill" data-theme="minimalista">⚪ Minimalista</button>
+      <button class="theme-pill" data-theme="retro">🟠 Retrô</button>
+    </div>
+
+    <!-- LAYOUT PRINCIPAL -->
+    <main class="layout-principal">
+      <!-- CALENDÁRIO + STATS -->
+      <section class="calendar-column">
+        <div class="card calendar-card">
+          <div class="calendar-title">
+            <span class="calendar-icon">📅</span>
+            <div>
+              <h2>Calendário</h2>
+              <p>Selecione o dia</p>
+            </div>
+          </div>
+
+          <div class="calendar-header">
+            <button id="prev-month" class="cal-btn">◀</button>
+            <span id="month-label"></span>
+            <button id="next-month" class="cal-btn">▶</button>
+          </div>
+
+          <div id="calendar-grid" class="calendar-grid"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card total">
+            <div class="stat-icon">🔵</div>
+            <div>
+              <span class="stat-label">Total</span>
+              <span id="stat-total" class="stat-value">0</span>
+            </div>
+          </div>
+          <div class="stat-card done">
+            <div class="stat-icon">✅</div>
+            <div>
+              <span class="stat-label">Feitas</span>
+              <span id="stat-completed" class="stat-value">0</span>
+            </div>
+          </div>
+          <div class="stat-card goal">
+            <div class="stat-icon">📈</div>
+            <div>
+              <span class="stat-label">Meta</span>
+              <span id="stat-progress" class="stat-value">0%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLANNER -->
+      <section class="planner-column">
+        <div class="card planner-card">
+          <form id="taskForm" class="planner-form">
+            <span class="planner-icon">⚡</span>
+            <input
+              type="text"
+              id="taskInput"
+              placeholder="Adicione uma nova tarefa ou hábito..."
+              autocomplete="off"
+            />
+            <select id="priority-select">
+              <option value="baixa">Baixa</option>
+              <option value="media">Média</option>
+              <option value="alta">Alta</option>
+            </select>
+            <button type="submit" class="btn-primary">
+              <span>+</span> Adicionar
+            </button>
+          </form>
+
+          <div class="planner-filters">
+            <div class="pill-group">
+              <button class="filter-pill active" data-filter="all">Todos</button>
+              <button class="filter-pill" data-filter="pending">Pendentes</button>
+              <!-- Texto corrigido para Concluídos -->
+              <button class="filter-pill" data-filter="completed">Concluídos</button>
+            </div>
+            <button id="clearCompleted" class="btn-danger">Limpar concluídos</button>
+          </div>
+
+          <ul id="taskList" class="task-list">
+            <!-- Itens renderizados via JS -->
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

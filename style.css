@@ -1,0 +1,651 @@
+/* =============================
+   VARIÁVEIS DE TEMA
+============================= */
+:root {
+  /* Tema claro (padrão) */
+  --bg: #f9fafb;
+  --bg-strong: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --card-secondary: #f9fafb;
+  --border: #e5e7eb;
+  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+
+  --accent: #7c3aed;
+  --accent-2: #ec4899;
+
+  --danger: #ef4444;
+  --danger-hover: #b91c1c;
+}
+
+/* Overrides quando está no modo escuro (para qualquer tema) */
+body.dark-theme {
+  --bg: #020617;
+  --bg-strong: #020617;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --card: #020617;
+  --card-secondary: #020617;
+  --border: #0b1220;
+  --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.65);
+}
+
+/* =============================
+   BASE
+============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Clássico escuro: fundo com brilhos */
+body.dark-theme.theme-classico {
+  background: radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.2), transparent),
+    var(--bg);
+}
+
+/* Minimalista claro: fundo quase branco, bem clean */
+body.theme-minimalista:not(.dark-theme) {
+  background: #f3f4f6;
+}
+
+/* Minimalista escuro: gradiente azul/roxo */
+body.theme-minimalista.dark-theme {
+  background: radial-gradient(circle at top left, #0f172a, #020617),
+    radial-gradient(circle at bottom right, #4c1d95, #020617);
+}
+
+/* Retrô: muda a sensação geral de fonte e leve tom de fundo */
+body.theme-retro {
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Retrô claro: fundo levemente creme */
+body.theme-retro:not(.dark-theme) {
+  background: radial-gradient(circle at top left, #fffbeb, #fefce8);
+}
+
+/* Retrô escuro: fundo mais profundo */
+body.theme-retro.dark-theme {
+  background: radial-gradient(
+      circle at top left,
+      rgba(248, 250, 252, 0.03),
+      transparent 60%
+    ),
+    linear-gradient(120deg, #020617, #020617);
+}
+
+.app-container {
+  max-width: 1180px;
+  margin: 1.8rem auto 3rem auto;
+  padding: 0 1rem;
+}
+
+/* =============================
+   HERO
+============================= */
+.hero-card {
+  display: flex;
+  alignments: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #7c3aed, #ec4899, #f97316);
+  border-radius: 1.5rem;
+  padding: 1.8rem 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-card h1 {
+  color: #f9fafb;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+hero-card p {
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.hero-toggle {
+  border: none;
+  background: #020617;
+  color: #f9fafb;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ====== VARIAÇÃO MINIMALISTA DO HERO ====== */
+body.theme-minimalista .hero-card {
+  background: transparent;
+  box-shadow: none;
+  padding: 1.5rem 0 0.8rem;
+  border-radius: 0;
+}
+
+body.theme-minimalista .hero-card h1 {
+  color: var(--text);
+  font-size: 2.1rem;
+}
+
+body.theme-minimalista .hero-card p {
+  color: var(--muted);
+}
+
+body.theme-minimalista .hero-toggle {
+  background: transparent;
+  color: var(--text);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+/* =============================
+   PÍLULAS DE TEMA
+============================= */
+.theme-row {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.theme-pill {
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--text);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.theme-pill.active {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+/* Retrô: botão laranja */
+.theme-pill[data-theme="retro"].active {
+  background-color: #f97316;
+  color: #111827;
+}
+
+/* =============================
+   LAYOUT PRINCIPAL
+============================= */
+.layout-principal {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 1.7rem;
+}
+
+/* =============================
+   CARTÕES GENÉRICOS
+============================= */
+.card {
+  border-radius: 1.2rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, var(--card), var(--card-secondary));
+  box-shadow: var(--shadow-soft);
+  padding: 1.3rem 1.4rem;
+}
+
+/* Minimalista claro: cards grandes e com sombra forte */
+body.theme-minimalista:not(.dark-theme) .card {
+  border-radius: 2rem;
+  box-shadow: 0 32px 60px rgba(15, 23, 42, 0.15);
+}
+
+/* Minimalista escuro: cards destacados no gradiente */
+body.theme-minimalista.dark-theme .card {
+  border-radius: 2rem;
+  background: radial-gradient(circle at top left, #020617, #020617);
+  border-color: #0b1120;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.8);
+}
+
+/* Retrô claro: borda pontilhada nos cards */
+body.theme-retro:not(.dark-theme) .card {
+  border-style: dashed;
+}
+
+/* Retrô escuro: cards com glow laranja */
+body.theme-retro.dark-theme .card {
+  border-radius: 1.6rem;
+  border-color: rgba(248, 153, 29, 0.5);
+  box-shadow: 0 30px 80px rgba(248, 153, 29, 0.25);
+}
+
+/* =============================
+   CALENDÁRIO
+============================= */
+.calendar-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.calendar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 0.9rem;
+  background: radial-gradient(circle at top left, #a855f7, #4c1d95);
+  display: flex;
+  alignments: center;
+  justify-content: center;
+  color: #f9fafb;
+}
+
+.calendar-title h2 {
+  font-size: 1.05rem;
+}
+
+.calendar-title p {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.cal-btn {
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  border: none;
+  cursor: pointer;
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--text);
+}
+
+#month-label {
+  font-weight: 600;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.day-name {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* bolinhas do calendário */
+.day-cell {
+  border-radius: 999px;
+  padding: 0.6rem 0;
+  text-align: center;
+  font-size: 0.86rem;
+  background: #eef2ff;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.day-cell.empty {
+  visibility: hidden;
+}
+
+day-cell.today {
+  border-color: rgba(168, 85, 247, 0.9);
+}
+
+/* estilo geral do selecionado (base) */
+.day-cell.selected {
+  background: radial-gradient(circle at top left, #a855f7, #7c3aed);
+  color: #f9fafb;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+}
+
+/* Tema escuro para dias do calendário */
+body.dark-theme .day-cell {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+/* Minimalista claro: bolinhas suaves */
+body.theme-minimalista:not(.dark-theme) .day-cell {
+  background: #eef2ff;
+}
+
+/* Minimalista escuro: bolinhas bem escuras */
+body.theme-minimalista.dark-theme .day-cell {
+  background: #020617;
+}
+
+/* =============================
+   STATS
+============================= */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+/* claro: cards coloridos e clarinhos */
+.stat-card {
+  border-radius: 1rem;
+  padding: 0.9rem 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.15);
+}
+
+.stat-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f9fafb;
+}
+
+.stat-card.total .stat-icon {
+  background: radial-gradient(circle at top left, #38bdf8, #0ea5e9);
+}
+.stat-card.done .stat-icon {
+  background: radial-gradient(circle at top left, #4ade80, #22c55e);
+}
+.stat-card.goal .stat-icon {
+  background: radial-gradient(circle at top left, #f9a8d4, #e879f9);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* escuro: cards escuros */
+body.dark-theme .stat-card {
+  background: linear-gradient(145deg, #020617, #020617);
+  box-shadow: none;
+  color: #f9fafb;
+}
+
+/* Minimalista claro: stats com sombra extra */
+body.theme-minimalista:not(.dark-theme) .stat-card {
+  border-radius: 1.4rem;
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.18);
+}
+
+/* Retrô claro: ícones com anel laranja */
+body.theme-retro:not(.dark-theme) .stat-icon {
+  border: 2px solid #f97316;
+}
+
+/* =============================
+   PLANNER
+============================= */
+.planner-card {
+  padding: 1.5rem 1.6rem;
+}
+
+/* barra de input – clara por padrão */
+.planner-form {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid #e5e7eb;
+}
+
+body.dark-theme .planner-form {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: #111827;
+}
+
+.planner-icon {
+  color: #facc15;
+  font-size: 1.1rem;
+}
+
+.planner-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--text);
+}
+
+.planner-form input::placeholder {
+  color: #9ca3af;
+}
+
+.planner-form select {
+  border-radius: 999px;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #111827;
+}
+
+body.dark-theme .planner-form select {
+  border-color: #374151;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.btn-primary {
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #f9fafb;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+}
+
+/* FILTROS */
+.planner-filters {
+  margin-top: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pill-group {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* claro: pílulas cinza/white, ativa preta */
+.filter-pill {
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #e5e7eb;
+  background: #f3f4f6;
+  color: #111827;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.filter-pill.active {
+  background: #111827;
+  color: #f9fafb;
+}
+
+/* escuro: pílulas escuras, ativa clara */
+body.dark-theme .filter-pill {
+  border-color: #111827;
+  background: #020617;
+  color: #f9fafb;
+}
+
+body.dark-theme .filter-pill.active {
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* minimalista: filtros ainda mais clean (todo branco) */
+body.theme-minimalista:not(.dark-theme) .filter-pill {
+  background: #ffffff;
+}
+
+/* =============================
+   LISTA DE TAREFAS
+============================= */
+.task-list {
+  list-style: none;
+  margin-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* claro: cards brancos */
+.task-item {
+  border-radius: 0.9rem;
+  padding: 0.7rem 0.9rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+}
+
+/* escuro: cards escuros */
+body.dark-theme .task-item {
+  background: #020617;
+  border-color: #111827;
+  box-shadow: none;
+}
+
+.task-main {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Checkbox redonda – vale pros dois temas */
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  accent-color: #22c55e;
+  cursor: pointer;
+}
+
+task-text {
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+task-text.completed {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.priority-tag {
+  font-size: 0.7rem;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+}
+
+.priority-baixa {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.priority-media {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.priority-alta {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+/* =============================
+   RESPONSIVO
+============================= */
+@media (max-width: 900px) {
+  .layout-principal {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================
+   AJUSTE EXTRA:
+   DIA SELECIONADO NO MINIMALISTA CLARO
+============================= */
+body.theme-minimalista:not(.dark-theme) .day-cell.selected {
+  background: #f4e4ff;
+  color: #7c3aed;
+  border: 2px solid #a855f7;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+}
+
+/* =============================
+   AJUSTES DE LEGIBILIDADE PARA BOTÕES DE FILTRO NO MODO MINIMALISTA CLARO
+   Estes estilos adicionais garantem que os botões \"Todos\", \"Pendentes\"
+   e \"Concluídos\" permaneçam legíveis quando o tema minimalista claro
+   estiver ativo. Os estilos são adicionados ao final do arquivo para
+   manter a contagem de linhas e evitar conflitos com regras anteriores.
+============================= */
+
+body.theme-minimalista:not(.dark-theme) .filter-pill {
+  background-color: #f3f4f6;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
+
+body.theme-minimalista:not(.dark-theme) .filter-pill.active {
+  background-color: #111827;
+  color: #f9fafb;
+  border-color: #111827;
+}
+
+body.theme-minimalista:not(.dark-theme) .filter-pill:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
